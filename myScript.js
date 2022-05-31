@@ -1,19 +1,19 @@
-//variables for buttons
-var start=document.querySelector(".btn1")
-var stop=document.querySelector(".btn2")
-var reset=document.querySelector(".btn3")
+//letiables for buttons
+let start=document.querySelector(".btn1")
+let stop=document.querySelector(".btn2")
+let reset=document.querySelector(".btn3")
 
-//variables for time
-var second=document.querySelector(".sec")
-var minute=document.querySelector(".mins")
-var hour=document.querySelector(".hrs")
+//letiables for time
+let second=document.querySelector(".sec")
+let minute=document.querySelector(".mins")
+let hour=document.querySelector(".hrs")
 
 
 //logic
-var hrs=0;
-var mins=0;
-var sec=0;
-
+let hrs=0;
+let mins=0;
+let sec=0;
+let timeInterval=undefined;
 
 second.textContent=sec;
 minute.textContent=mins;
@@ -50,13 +50,16 @@ function changeTime(){
 }
 
 function runTime(){
-
-    timeInterval=setInterval(changeTime,100)
+    console.log({timeInterval});
+    if(!timeInterval){
+        timeInterval=setInterval(changeTime,100)
+    }
 }
 start.addEventListener('click',runTime);
 
 function stopTime(){
     clearInterval(timeInterval);
+    timeInterval = undefined;
 }
 stop.addEventListener('click',stopTime);
 
@@ -78,8 +81,8 @@ function clearAll(){
 
 
 if(sec>10){
-var dec = sec - Math.floor(sec);
+let dec = sec - Math.floor(sec);
 sec = sec - dec;
-var sec = ("0" + sec).slice(-2) + dec.toString().substr(1);
+let sec = ("0" + sec).slice(-2) + dec.toString().substr(1);
 
 }
